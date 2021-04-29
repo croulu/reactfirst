@@ -17,7 +17,9 @@ class App extends Component {
     <Membre nom = 'Marianne' age='28'/>
     <Membre nom = 'Adrian'  age='8'/>
     <Membre nom = 'Richard'  age='30'/>
-    <Membre nom = 'Tchoupie' age='2'/>
+    <Membre nom = 'Tchoupie' age='2'>
+        <strong>je suis un furet</strong>
+    </Membre>
 </Fragment>
       )
   }
