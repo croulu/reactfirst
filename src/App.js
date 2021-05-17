@@ -24,7 +24,8 @@ const famille = {
 
 class App extends Component {
     state = {
-        famille: famille
+        famille: famille,
+        isShow: true
     }
 
     handleClick = (num) => {
@@ -47,9 +48,15 @@ class App extends Component {
         this.setState({famille})
     }
 
+    handleShowDescription = () => {
+        const isShow = !this.state.isShow
+        this.setState({isShow})
+    }
+
+
     render() {
         const {titre, auteur} = this.props
-        const {famille} = this.state
+        const {famille, isShow} = this.state
         return (
             <Fragment>
                 <div className="App">
@@ -68,7 +75,14 @@ class App extends Component {
                     <Membre nom={famille.membre2.nom} age={famille.membre2.age}/>
                     <Membre nom={famille.membre3.nom} age={famille.membre3.age}/>
                     <Membre nom={famille.membre4.nom} age={famille.membre4.age}>
-                        <strong>je suis un furet</strong>
+                        {
+                            isShow ? <strong>je suis un furet</strong> : null
+                        }
+                        <button onClick={this.handleShowDescription}>
+                            {
+                                isShow ? 'Cacher' : 'Montrer'
+                            }
+                        </button>
                     </Membre>
                     <Button
                         vieillir={() => this.handleClick(2)}/>
