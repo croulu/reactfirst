@@ -57,6 +57,17 @@ class App extends Component {
     render() {
         const {titre, auteur} = this.props
         const {famille, isShow} = this.state
+
+        let description = null
+
+        if (isShow) {
+            description = (
+                <strong>je suis un furet</strong>
+            )
+        } else {
+            description = null
+        }
+
         return (
             <Fragment>
                 <div className="App">
@@ -75,9 +86,7 @@ class App extends Component {
                     <Membre nom={famille.membre2.nom} age={famille.membre2.age}/>
                     <Membre nom={famille.membre3.nom} age={famille.membre3.age}/>
                     <Membre nom={famille.membre4.nom} age={famille.membre4.age}>
-                        {
-                            isShow ? <strong>je suis un furet</strong> : null
-                        }
+                        { description }
                         <button onClick={this.handleShowDescription}>
                             {
                                 isShow ? 'Cacher' : 'Montrer'
