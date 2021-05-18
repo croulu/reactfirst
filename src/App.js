@@ -75,6 +75,7 @@ class App extends Component {
         const liste = Object.keys(famille)
             .map(membre => (
                 <Membre
+                    key={membre}
                     hideName={ ()=> this.hideName(membre) }
                     nom={famille[membre].nom}
                     age={famille.[membre].age}/>
