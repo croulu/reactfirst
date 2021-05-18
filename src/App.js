@@ -64,9 +64,14 @@ class App extends Component {
             description = (
                 <strong>je suis un furet</strong>
             )
-        } else {
-            description = null
         }
+
+        const liste = Object.keys(famille)
+            .map(membre => (
+                <Membre
+                    nom={famille[membre].nom}
+                    age={famille.[membre].age}/>
+            ))
 
         return (
             <Fragment>
@@ -82,11 +87,9 @@ class App extends Component {
                                                  onChange={this.handleChangeAge}/>
                     </p>
                     <h2>autre titre h2</h2>
-                    <Membre nom={famille.membre1.nom} age={famille.membre1.age}/>
-                    <Membre nom={famille.membre2.nom} age={famille.membre2.age}/>
-                    <Membre nom={famille.membre3.nom} age={famille.membre3.age}/>
+                    { liste }
                     <Membre nom={famille.membre4.nom} age={famille.membre4.age}>
-                        { description }
+                        {description}
                         <button onClick={this.handleShowDescription}>
                             {
                                 isShow ? 'Cacher' : 'Montrer'
