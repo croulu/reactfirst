@@ -41,6 +41,12 @@ class App extends Component {
         this.setState({famille})
     }
 
+    hideName = (id) => {
+        const famille = {...this.state.famille}
+        famille[id].nom = 'X'
+        this.setState({famille})
+    }
+
     handleChangeAge = event => {
         const famille = {...this.state.famille}
         const age = event.target.value
@@ -69,6 +75,7 @@ class App extends Component {
         const liste = Object.keys(famille)
             .map(membre => (
                 <Membre
+                    hideName={ ()=> this.hideName(membre) }
                     nom={famille[membre].nom}
                     age={famille.[membre].age}/>
             ))
@@ -79,11 +86,13 @@ class App extends Component {
                     <h1>React app [{titre}] [{auteur}] </h1>
                     <p>Lorem ipsum dolor sit amet</p>
                     <p>
-                        nom membre 1: <input type="text" value={famille.membre1.nom}
+                        nom membre 1: <input type="text"
+                                             value={famille.membre1.nom}
                                              onChange={this.handleChange}/>
                     </p>
                     <p>
-                        nom age membre 1: <input type="text" value={famille.membre1.age}
+                        nom age membre 1: <input type="text"
+                                                 value={famille.membre1.age}
                                                  onChange={this.handleChangeAge}/>
                     </p>
                     <h2>autre titre h2</h2>
