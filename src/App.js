@@ -34,10 +34,10 @@ class App extends Component {
         this.setState({famille})
     }
 
-    handleChange = event => {
+    handleChange = (event, id) => {
         const famille = {...this.state.famille}
         const nom = event.target.value
-        famille.membre1.nom = nom
+        famille[id].nom = nom
         this.setState({famille})
     }
 
@@ -47,10 +47,10 @@ class App extends Component {
         this.setState({famille})
     }
 
-    handleChangeAge = event => {
+    handleChangeAge = (event, id) => {
         const famille = {...this.state.famille}
         const age = event.target.value
-        famille.membre1.age = age
+        famille[id].age = age
         this.setState({famille})
     }
 
@@ -77,6 +77,8 @@ class App extends Component {
                 <Membre
                     key={membre}
                     hideName={ ()=> this.hideName(membre) }
+                    handleChange={ (event)=> this.handleChange(event, membre) }
+                    handleChangeAge={ (event)=> this.handleChangeAge(event, membre) }
                     nom={famille[membre].nom}
                     age={famille.[membre].age}/>
             ))
@@ -86,16 +88,6 @@ class App extends Component {
                 <div className="App">
                     <h1>React app [{titre}] [{auteur}] </h1>
                     <p>Lorem ipsum dolor sit amet</p>
-                    <p>
-                        nom membre 1: <input type="text"
-                                             value={famille.membre1.nom}
-                                             onChange={this.handleChange}/>
-                    </p>
-                    <p>
-                        nom age membre 1: <input type="text"
-                                                 value={famille.membre1.age}
-                                                 onChange={this.handleChangeAge}/>
-                    </p>
                     <h2>autre titre h2</h2>
                     { liste }
                     <Membre nom={famille.membre4.nom} age={famille.membre4.age}>
